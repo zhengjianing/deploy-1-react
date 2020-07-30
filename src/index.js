@@ -5,7 +5,7 @@ import './index.css';
 class Square extends React.Component {
   render() {
     return (
-      <button className="square">
+      <button className="square" onClick={() => this.props.onClick()}>
         {this.props.value}
       </button>
     )
@@ -13,8 +13,25 @@ class Square extends React.Component {
 }
 
 class Board extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
   renderSquare(i) {
-    return <Square value={i} />;
+    return <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)}/>;
+  }
+
+  handleClick(index) {
+    const newSquares = this.state.squares.slice();
+    newSquares[index] = "X";
+    this.setState({
+      squares: newSquares
+    });
   }
 
   render() {
@@ -24,19 +41,13 @@ class Board extends React.Component {
       <div>
           <div className="status">{status}</div>
           <div className="board-row">
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
+            {[0,1,2].map((i) => this.renderSquare(i))}
           </div>
           <div className="board-row">
-            {this.renderSquare(3)}
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
+            {[3,4,5].map((i) => this.renderSquare(i))}
           </div>
           <div className="board-row">
-            {this.renderSquare(6)}
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
+            {[6,7,8].map((i) => this.renderSquare(i))}
           </div>
       </div>
   );
