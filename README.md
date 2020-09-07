@@ -33,14 +33,17 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 Generate the latest production build.
 
+
 ### `sh ./copy-assets.sh`
 
 Copy the /build folder to server.
-Note: Only need to do this if we make changes to reactapp.conf file.
+
 
 ### `sh ./copy-nginx-config.sh`
 
 Copy Nginx config file to server.
+Note: Only need to do this if we make changes to reactapp.conf file.
+
 
 ### `sh ./start-server.sh`
 
