@@ -29,6 +29,11 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Deployment process
 
+### `npm install`
+
+Install all dependencies.
+
+
 ### `npm run build`
 
 Generate the latest production build.
